@@ -23,12 +23,23 @@ def select_latest(list):
     return output
 
 def print_operation(dict):
-    """Takes a dictionary with operations info as input and prints info about it"""
-    from_ = dict["from"].split(" ")
-    print(f"{dict['date'][8:10]}.{dict['date'][5:7]}.{dict['date'][:4]}", end=" ")
+    """Takes a dictionary with operation info as input and prints info about it"""
+
+    if "date" in dict.keys():
+        print(f"{dict['date'][8:10]}.{dict['date'][5:7]}.{dict['date'][:4]}", end=" ")
+
     print(dict['description'])
-    print(from_[0], end=" ")
-    print(f"{from_[1][:4]} {from_[1][5:7]}** {'*'*4} {from_[1][-4:]}", end=" -> ")
-    print(f"Счет **{dict['to'][-4:]}")
+
+    if "from" in dict.keys():
+        from_ = dict["from"].split(" ")
+        index = 0
+        for i in range(len(from_)):
+            if from_[i].isdigit():
+                index = i
+                break
+        print(" ".join(from_[0:index]), end=" ")
+        print(f"{from_[index][:4]} {from_[index][5:7]}** {'*'*4} {from_[index][-4:]}", end=" ")
+
+    print(f"-> Счет **{dict['to'][-4:]}")
 
 
