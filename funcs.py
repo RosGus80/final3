@@ -1,6 +1,4 @@
 import json
-from operator import itemgetter
-from pprint import pprint as write
 
 
 def load_data(path):
