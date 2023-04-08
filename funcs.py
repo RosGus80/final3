@@ -42,4 +42,6 @@ def print_operation(dict):
 
     print(f"-> Счет **{dict['to'][-4:]}")
 
+    print(dict["operationAmount"]["amount"], dict["operationAmount"]["currency"]["name"])
+
 
