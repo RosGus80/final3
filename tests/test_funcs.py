@@ -245,8 +245,8 @@ def test_select__latest():
 
 
 def test_load__data():
-    with open("/Users/rostislavgusev/PycharmProjects/py_project/final3/data.json") as file:
-        assert load_data("/Users/rostislavgusev/PycharmProjects/py_project/final3/data.json") == json.load(file)
+    with open("data.json") as file:
+        assert load_data("data.json") == json.load(file)
 
 def test_print__operation():
 
