@@ -22,11 +22,11 @@ def select_latest(list):
 
 def print_operation(dict):
     """Takes a dictionary with operation info as input and prints info about it"""
-
+    output = ""
     if "date" in dict.keys():
-        print(f"{dict['date'][8:10]}.{dict['date'][5:7]}.{dict['date'][:4]}", end=" ")
+        output += f"{dict['date'][8:10]}.{dict['date'][5:7]}.{dict['date'][:4]} "
 
-    print(dict['description'])
+    output += dict['description']
 
     if "from" in dict.keys():
         from_ = dict["from"].split(" ")
@@ -35,11 +35,14 @@ def print_operation(dict):
             if from_[i].isdigit():
                 index = i
                 break
-        print(" ".join(from_[0:index]), end=" ")
-        print(f"{from_[index][:4]} {from_[index][5:7]}** {'*'*4} {from_[index][-4:]}", end=" ")
+        output += "\n"
+        output += f"{' '.join(from_[0:index])}"
+        output += f"{from_[index][:4]} {from_[index][5:7]}** {'*'*4} {from_[index][-4:]} "
 
-    print(f"-> Счет **{dict['to'][-4:]}")
+    output += f"-> Счет **{dict['to'][-4:]}"
 
-    print(dict["operationAmount"]["amount"], dict["operationAmount"]["currency"]["name"])
+    output += "\n"
+    output += f"{dict['operationAmount']['amount']} {dict['operationAmount']['currency']['name']}"
+    return output
 
 
