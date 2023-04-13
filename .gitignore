@@ -13,3 +13,5 @@ sdist/
 var/
 test.py
 .idea
+.coverage
+poetry.lock
